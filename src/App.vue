@@ -1,7 +1,13 @@
 <template>
   <div id="app">
     <img class="logo" alt="Vue logo" src="./assets/logo.png" />
-    <Skills />
+    <div id="app">
+      <nav>
+        <router-link to="/">Home</router-link>
+        <router-link to="/about">About</router-link>
+      </nav>
+      <router-view />
+    </div>
   </div>
 </template>
 
@@ -33,10 +39,24 @@ html {
   height: 100%;
 }
 #app {
-  width: 50%;
+  width: 80%;
 }
 
 .logo {
   margin-left: 30%;
+}
+
+nav {
+  padding: 20px 20px 20px 0;
+}
+
+nav a {
+  padding: 10px;
+  text-decoration: none;
+  background: #fff;
+  border-radius: 3px;
+  color: rgb(0, 110, 255);
+  font-weight: bold;
+  margin-right: 15px;
 }
 </style>

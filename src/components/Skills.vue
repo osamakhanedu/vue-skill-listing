@@ -5,7 +5,16 @@
     </form>
     <div class="holder">
       <ul>
-        <li v-for="(data, index) in skills" :key="index">{{data.skill}}</li>
+        <transition-group
+          name="list"
+          enter-active-class="animated bounceInRight"
+          leave-active-class="animated bounceOutRight"
+        >
+          <li v-for="(data, index) in skills" :key="index">
+            {{data.skill}}
+            <i class="fa fa-minus-circle" v-on:click="remove(index)"></i>
+          </li>
+        </transition-group>
       </ul>
       <p>These are the skills that you possess.</p>
     </div>
@@ -30,6 +39,9 @@ export default {
         this.skills.push({ skill: this.skill });
         this.skill = "";
       }
+    },
+    remove(id) {
+      this.skills.splice(id, 1);
     }
   }
 };
@@ -37,6 +49,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style  scoped>
+@import "https://cdn.jsdelivr.net/npm/animate.css@3.5.1";
+@import "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+
 .container {
   box-shadow: 0px 0px 40px #61c4fd;
 }
@@ -62,6 +77,10 @@ ul li {
   color: #3e5252;
 }
 
+ul li i {
+  text-align: end;
+}
+
 p {
   text-align: center;
   padding: 30px 0;
@@ -85,5 +104,10 @@ input {
   display: inline-block;
   padding: 5px;
   margin-top: -20px;
+}
+
+i {
+  float: right;
+  cursor: pointer;
 }
 </style>
